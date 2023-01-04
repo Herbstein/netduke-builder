@@ -36,14 +36,16 @@ WORKDIR /
 
 # netduke32
 
-## Get Netduke32 sources
-RUN git clone https://voidpoint.io/StrikerTheHedgefox/eduke32-csrefactor --branch netduke32_main --depth 1
-
 ## Specific Netduke32 dependencies
-RUN apt-get install -y libsdl2-dev
+RUN apt-get install -y libsdl2-dev libvorbis-dev
+
+## Get Netduke32 sources
+RUN git clone https://voidpoint.io/StrikerTheHedgefox/eduke32-csrefactor
 
 ## Stay in Netduke directory when building
 WORKDIR /eduke32-csrefactor
+
+RUN git checkout c4afe166aad7bf3d2ed797f64bf3b8a20211fb04
 
 ENV CPATH="../libvpx/vpx-vp8-vp9-nodocs-x86_64-linux-v1.10.0/include:../flac/include"
 
